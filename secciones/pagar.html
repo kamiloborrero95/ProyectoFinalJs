@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Shadows+Into+Light&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="../fonts/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="../sass/main.css" />
+    <link rel="stylesheet" href="../sass/store.css" />
+    <link rel="stylesheet" href="../sass/estilosStore.css" />
+    <link rel="shortcut icon" href="" type="image/x-icon" />
+    <title>MarArt</title>
+  </head>
+  <!-- Encabezado -->
+  <header>
+    <div class="container">
+      <div
+        class="row justify-content-lg-between justify-content-center py-3 align-items-center"
+      >
+        <div class="col col-auto order-1 order-lg-1">
+          <ul class="nav">
+            <li class="nav-item">
+              <a href="../Index.html" class="nav-link">Inicio</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="store.html" class="nav-link">Tienda</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-lg col-12 text-center col-auto order-0 order-lg-2">
+          <h1>
+            <a href="../Index.html" class="text-dark website-title">MarArt</a>
+          </h1>
+        </div>
+
+        <div class="col col-auto order-lg-3">
+          <ul class="nav">
+            <li class="nav-item">
+              <a href="aboutUs.html" class="nav-link">Nosotros</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="contact.html" class="nav-link">Contacto</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  </header>
+
+  <body>
+    <div class="container">
+      <h1>Facturacion</h1>
+      <div class="form"></div>
+      <h2>Resumen de compra:</h2>
+      <table class="table table-warning table-responsive">
+        <thead>
+          <tr>
+            <th>Imagen</th>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Sub-total</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3"><button>pagar</button></td>
+            <td>Total a pagar:</td>
+            <td>$$$$</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+
+    <!--FOOTER-->
+    <footer class="bg-primary container">
+      <div class="row justify-content-md-between align-items-center py-3">
+        <div
+          class="col-md-4 text-center text-md-left order-md-0 order-1 my-4 my-md-0"
+        >
+          <p class="text-white mb-0">
+            <small>&copy; Todos los derechos reservados</small>
+          </p>
+        </div>
+        <div class="col-md-4">
+          <ul class="nav justify-content-center">
+            <li class="nav-item">
+              <a href="../Index.html" class="nav-link text-white">Inicio</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="aboutUs.html" class="nav-link text-white">Nostros</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="contact.html" class="nav-link text-white">Contacto</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4 text-md-right text-center order-2 order-md-0">
+          <a href="#" class="text-white mr-1">
+            <i class="fab fa-brands fa-facebook-square"></i>
+          </a>
+          <a href="#" class="text-white mr-1">
+            <i class="fab fa-brands fa-twitter"></i>
+          </a>
+          <a href="#" class="text-white">
+            <i class="fab fa-brands fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../js/pagar.js"></script>
+    <!-- <script src="../js/store2.js"></script> -->
+    <script src="../js/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>    
+  </body>
+</html>
