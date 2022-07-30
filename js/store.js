@@ -15,32 +15,49 @@ let precioTotal = document.querySelector(".precioTotal");
 let conteoProducto = document.querySelector(".contarProducto");
 
 comprarCosas = [];
-// while (comprarCosas.length == 0) {
-//   if (typeof sessionStorage.getItem("productos") == "string") {
-//     comprarCosas = JSON.parse(sessionStorage.getItem("productos"));
-//   }
-//   break;
-// }
+while (comprarCosas.length == 0) {
+  if (typeof sessionStorage.getItem("productos") == "string") {
+    cosas = [];
+    cosas = JSON.parse(sessionStorage.getItem("productos"));
+    for (let i = 0; i < cosas.length; i++) {
+      comprarCosas.push(cosas[i]);
+    }
+  }
+  break;
+}
 
-let totalCard = 0;
-// while (totalCard == 0) {
-// if (typeof(sessionStorage.getItem("valorTotal") == "string")) {
-//     totalCard += JSON.parse(sessionStorage.getItem("valorTotal"));
-// }
-// break;
-// }
+let totalCard;
+let precio = JSON.parse(sessionStorage.getItem("valorTotal"));
+
+while (precio != null) {
+  if(precio > 0){
+    totalCard = 0;
+    totalCard = parseFloat(precio) + parseFloat(totalCard);
+  break;
+  }
+}
+
+while (totalCard == undefined) {
+if (typeof(sessionStorage.getItem("valorTotal") != "string")) {
+  totalCard = 0;
+    break;
+}
+else{
+  totalCard = precio; 
+  break;
+}
+}
 
 let contarProductos = 0;
-// while (contarProductos == 0) {
-//     comprarCosas.forEach((e) => {
-//     contarProductos += e.cantidad;
-//     totalCard = 0;
-//   })
-//   break;
-// }
+let prodGuardados = JSON.parse(sessionStorage.getItem("contProductos"));
+
+while (prodGuardados > 0) {
+  contarProductos = prodGuardados + contarProductos;
+  break;
+}
 
 // funciones
-
+cargarHTML();
 //eventos
 cargarListeners();
 function cargarListeners() {
@@ -65,7 +82,7 @@ function borrarProducto(e) {
         let precioReducido =
           parseFloat(value.precio) * parseFloat(value.cantidad);
         totalCard = totalCard - precioReducido;
-        totalCard = totalCard.toFixed(2);
+        // totalCard = totalCard.toFixed(2);
       }
     });
     comprarCosas = comprarCosas.filter((product) => product.id !== borrarId);
@@ -166,11 +183,15 @@ function cargarHTML() {
     sessionStorage.setItem("valorTotal", total);
     let nuevoStorage = JSON.stringify(comprarCosas);
     sessionStorage.setItem("productos", nuevoStorage);
+    let contProductos = JSON.stringify(contarProductos);
+    sessionStorage.setItem("contProductos", contProductos);
   });
 }
 function clearHTML() {
   contenedorComprarProducto.innerHTML = "";
   sessionStorage.removeItem("productos");
+  sessionStorage.removeItem("valorTotal");
+  sessionStorage.removeItem("contProductos");
 }
 
 //librerias
