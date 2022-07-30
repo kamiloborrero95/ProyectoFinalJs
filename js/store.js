@@ -14,9 +14,30 @@ let contenedorComprarProducto = document.querySelector(".card-items");
 let precioTotal = document.querySelector(".precioTotal");
 let conteoProducto = document.querySelector(".contarProducto");
 
-let comprarCosas = [];
+comprarCosas = [];
+// while (comprarCosas.length == 0) {
+//   if (typeof sessionStorage.getItem("productos") == "string") {
+//     comprarCosas = JSON.parse(sessionStorage.getItem("productos"));
+//   }
+//   break;
+// }
+
 let totalCard = 0;
+// while (totalCard == 0) {
+// if (typeof(sessionStorage.getItem("valorTotal") == "string")) {
+//     totalCard += JSON.parse(sessionStorage.getItem("valorTotal"));
+// }
+// break;
+// }
+
 let contarProductos = 0;
+// while (contarProductos == 0) {
+//     comprarCosas.forEach((e) => {
+//     contarProductos += e.cantidad;
+//     totalCard = 0;
+//   })
+//   break;
+// }
 
 // funciones
 
@@ -24,7 +45,6 @@ let contarProductos = 0;
 cargarListeners();
 function cargarListeners() {
   allContainerCart.onclick = agregarProducto;
-
   contenedorComprarProducto.onclick = borrarProducto;
 }
 
@@ -50,7 +70,22 @@ function borrarProducto(e) {
     });
     comprarCosas = comprarCosas.filter((product) => product.id !== borrarId);
     contarProductos--;
-    if (contarProductos === 0) {
+    Toastify({
+      text: "producto eliminado!",
+      duration: 2000,
+      gravity: "top",
+      position: "left",
+      stopOnFocus: true,
+      className: "toastStore",
+      offset: {
+        x: 10,
+        y: 105,
+      },
+      style: {
+        background: "linear-gradient(to right, red, lightblue)",
+      },
+    }).showToast();
+    if (contarProductos <= 0) {
       conteoProducto.innerHTML = 0;
       precioTotal.innerHTML = 0;
     }
@@ -82,12 +117,26 @@ function leerContenido(product) {
         return product;
       }
     });
-
     comprarCosas = [...prod];
   } else {
     comprarCosas = [...comprarCosas, infoProducto];
     contarProductos++;
   }
+  Toastify({
+    text: "producto agregado!",
+    duration: 2000,
+    gravity: "top",
+    position: "left",
+    stopOnFocus: true,
+    className: "toastStore",
+    offset: {
+      x: 10,
+      y: 105,
+    },
+    style: {
+      background: "linear-gradient(to right, #00b09b, #96c93d)",
+    },
+  }).showToast();
   cargarHTML();
 }
 
@@ -105,20 +154,45 @@ function cargarHTML() {
                 <h5 class="cart-price">$${precio}</h5>
                 <h6>Cantidad: ${cantidad}</h6>
             </div>
-            <span class="borrarProducto" data-id="${id}">X</span>
+            <span id="btnEliminarProd" class="borrarProducto" data-id="${id}">X</span>
         `;
     contenedorComprarProducto.appendChild(row);
 
     precioTotal.innerHTML = totalCard;
 
     conteoProducto.innerHTML = contarProductos;
-    //Local Storage
+    //session Storage
+    let total = JSON.stringify(totalCard);
+    sessionStorage.setItem("valorTotal", total);
     let nuevoStorage = JSON.stringify(comprarCosas);
-    localStorage.setItem("productos", nuevoStorage);
+    sessionStorage.setItem("productos", nuevoStorage);
   });
 }
-
 function clearHTML() {
   contenedorComprarProducto.innerHTML = "";
-  localStorage.removeItem("productos");
+  sessionStorage.removeItem("productos");
 }
+
+//librerias
+
+let btnPagar = document.querySelector(".botonPagar");
+btnPagar.onclick = (e) => {
+  if (comprarCosas.length == 0) {
+    Swal.fire("¡El carrito esta vacio! ¡Agrega un producto!");
+  } else {
+    Swal.fire({
+      title: "¿Desea continuar a facturación?",
+      text: "No sera posible agregar o eliminar productos desde facturación",
+      icon: "info",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      confirmButtonText: "continuar",
+      cancelButtonColor: "#d33",
+      cancelButtonText: "cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        location.assign("./pagar.html");
+      }
+    });
+  }
+};

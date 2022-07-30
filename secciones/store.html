@@ -12,7 +12,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="../fonts/fontawesome-all.min.css" />
     <link rel="stylesheet" href="../sass/main.css" />
-    <link rel="stylesheet" href="../sass/store.css" />
     <link rel="stylesheet" href="../sass/estilosStore.css" />
     <link rel="shortcut icon" href="" type="image/x-icon" />
     <title>MarArt</title>
@@ -57,9 +56,7 @@
       <hr />
 
       <div class="header-section">
-        <div class="logo">
-          <h1 class="website-title">Carrito de Compras</h1>
-        </div>
+        <div class="logo"></div>
 
         <div>
           <img class="carrito" src="../img/cart.svg" alt="" />
@@ -71,7 +68,7 @@
           <h3>Mi carrito</h3>
           <div class="card-items"></div>
           <h3>Total: $<strong class="precioTotal">0</strong></h3>
-          <a href="./pagar.html" class="btn btn-danger botonPagar">Pagar</a>
+          <a class="botonPagar btn btn-danger">Pagar</a>
         </div>
       </div>
     </div>
@@ -268,8 +265,12 @@
       </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.all.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
     <script src="../js/store.js"></script>
-    <!-- <script src="../js/store2.js"></script> -->
     <script src="../js/jquery.js"></script>
   </body>
 </html>

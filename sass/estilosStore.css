@@ -45,10 +45,7 @@ body {
   line-height: 18px;
 }
 .logo {
-  font-family: "shadows into light", sans-serif;
-  color: #806a41;
-  font-weight: 600;
-  margin-right: 25px;
+  align-self: center;
 }
 .carrito {
   width: 39px;
@@ -217,7 +214,10 @@ p.author a {
 .table {
   background-color: #806a41;
 }
-.table > tbody > tr > td > h3 {
+.table > tbody > tr > td > h3{
+  margin-top: 50px;
+}
+.table > tbody > tr > td > button{
   margin-top: 50px;
 }
 .imagenCompra {
@@ -225,4 +225,10 @@ p.author a {
   height: 150px;
   border: 1px solid;
   border-radius: 50%;
+}
+
+.toastStore{
+  z-index:100;
+  position: fixed;
+  width: 150px;
 }
