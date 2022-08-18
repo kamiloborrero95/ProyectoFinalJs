@@ -2,10 +2,10 @@ let comprarCosas = JSON.parse(sessionStorage.getItem("productos"));
 let pagoFinalValor = JSON.parse(sessionStorage.getItem("valorTotal"));
 const pagoFinal = document.getElementById("pagoFinal");
 pagoFinal.innerHTML = `$${pagoFinalValor}`;
-const subTotales = document.getElementsByClassName("subtotales"); // Para luego sumarlos en el total a pagar
 
 for (let i = 0; i < comprarCosas.length; i++) {
-  const { imagen, titulo, precio, cantidad, id } = comprarCosas[i]; //desestructuracion
+  const { imagen, titulo, precio, cantidad, id } = comprarCosas[i]; 
+  const calcSubTotales = cantidad * precio;
   const contenedorMayor = document.getElementById("tbody");
   const row = document.createElement("tr");
   contenedorMayor.appendChild(row);
@@ -15,12 +15,13 @@ for (let i = 0; i < comprarCosas.length; i++) {
     <td><h3>${titulo}</h3></td>
     <td><h3>${precio}</h3></td>
     <td><h3>${cantidad}</h3></td>
-    <td><h3 class="subtotales"></h3></td>
+    <td><h3 class="subtotales">${calcSubTotales}</h3></td>
     `;
 }
 
+
 btnPagar = document.getElementById("btnPago");
-btnPagar.onclick = function (event) {
+btnPagar.onclick = (event) => {
   Swal.fire({
     title: "¿Estas seguro de continuar?",
     text: "El pago sera registrado",
@@ -57,3 +58,34 @@ btnVolver.onclick = (event) => {
     result.isConfirmed && location.assign("./store.html");
   });
 };
+
+//FETCH
+let nombre = document.getElementById('full_name_id').value;
+let direccion = document.getElementById('street1_id').value;
+let direccionEspecifica = document.getElementById('street2_id').value;
+let ciudad = document.getElementById('city_id').value;
+let codigoPostal = document.getElementById('zip_id').value;
+
+
+let Comprador = function(nombre, direccion, direccionEspecifica, ciudad, codigoPostal){
+  this.nombre = nombre;
+  this.direccion = direccion;
+  this.direccionEspecifica = direccionEspecifica;
+  this. ciudad = ciudad; 
+  this.codigoPostal = codigoPostal
+}
+
+fetch('https://jsonplaceholder.typicode.com/posts', {
+  method: 'POST',
+  body: JSON.stringify({
+    title: "Cliente",
+    body: `${comprador}`,
+    userId: 1,
+  }),
+  headers: {
+    'content-type': 'aplication/json;charset=UTF-8',
+  },
+})
+  .then((response) => response.json())
+  .then((json) => console.log(json))
+  .then(res => console.log(res));

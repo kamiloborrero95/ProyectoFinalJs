@@ -30,22 +30,21 @@ let totalCard;
 let precio = JSON.parse(sessionStorage.getItem("valorTotal"));
 
 while (precio != null) {
-  if(precio > 0){
+  if (precio > 0) {
     totalCard = 0;
     totalCard = parseFloat(precio) + parseFloat(totalCard);
-  break;
+    break;
   }
 }
 
 while (totalCard == undefined) {
-if (typeof(sessionStorage.getItem("valorTotal") != "string")) {
-  totalCard = 0;
+  if (typeof (sessionStorage.getItem("valorTotal") != "string")) {
+    totalCard = 0;
     break;
-}
-else{
-  totalCard = precio; 
-  break;
-}
+  } else {
+    totalCard = precio;
+    break;
+  }
 }
 
 let contarProductos = 0;
